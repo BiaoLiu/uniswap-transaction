@@ -40,7 +40,7 @@ Injector为负责根据对象的依赖，依次构造依赖对象，最终构造
 ### 编译运行
 #### 编译
 ```
-cd app/user/service
+cd app/uniswap/job
 make build
 ```
 
