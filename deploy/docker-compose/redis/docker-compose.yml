@@ -1,0 +1,8 @@
+version: '3'
+services:
+  db:
+    build: .
+    container_name: docker_redis
+    restart : always
+    ports:
+      - '6379:6379'

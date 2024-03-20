@@ -1,0 +1,9 @@
+version: '3'
+services:
+  example-service:
+    image: uniswap-transaction/example-service
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    volumes:
+      - ./configs:/data/configs

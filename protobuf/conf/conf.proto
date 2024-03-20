@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package conf;
+
+option go_package = "uniswap-transaction/protobuf/conf;conf";
+
+import "google/protobuf/duration.proto";
+
+message Trace {
+  string endpoint = 1;
+}
+
+message HTTP {
+  string network = 1;
+  string addr = 2;
+  google.protobuf.Duration timeout = 3;
+}
+
+message GRPC {
+  string network = 1;
+  string addr = 2;
+  google.protobuf.Duration timeout = 3;
+}
+
+message Log {
+  string level = 1;
+  string filename = 2;
+}
+
+enum EnvMode {
+  DEBUG = 0;
+  DEVELOP = 1;
+  TEST = 2;
+  PRODUCTION = 3;
+}
+
+message MySql {
+  int64 max_idle_conns = 1;
+  int64 max_open_conns = 2;
+  google.protobuf.Duration max_life_time = 3;
+  google.protobuf.Duration slow_threshold = 4;
+  bool enable_auto_migrate = 5;
+  string log_level = 6;
+  string source = 7;
+}
+
+message Redis {
+  string addr = 1;
+  string password = 2;
+  int64 db = 3;
+  int64 pool_size = 4;
+  google.protobuf.Duration read_timeout = 5;
+  google.protobuf.Duration write_timeout = 6;
+}
+
+message RocketMq {
+  string endpoint = 1;
+  string instance_id = 2;
+  string access_key = 3;
+  string access_secret = 4;
+  string topic = 5;
+  string group_id = 6;
+}
+
+message Consul {
+  string address = 1;
+  string scheme = 2;
+}
+
+message Etcd {
+  repeated string endpoints = 1;
+}
+
+message WorkWx {
+  string key = 1;
+}
+
+message Feishu {
+  string key = 1;
+  string secret_key = 2;
+}
+
+message JwtAuth {
+  string prefix = 1;
+  string sign_key = 2;
+  string issuer = 3;
+  google.protobuf.Duration expire_time = 4;
+  google.protobuf.Duration buffer_time = 5;
+}
+
+message CronJob {
+  string name = 1;
+  string schedule = 2;
+}
+
+message pi {
+  string pi_server_key = 1;
+  string horizon_wallet_seed = 2;
+}
+
+message XxlJob {
+  string server_addr = 1;
+  string access_token = 2;
+  string registry_key = 3;
+}
+
+message Ethereum {
+  string api_url = 1;
+  int64 chain_id = 2;
+  string uniswap_router_address = 3;
+}

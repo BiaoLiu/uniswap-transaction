@@ -1,0 +1,40 @@
+syntax = "proto3";
+package kratos.api;
+
+option go_package = "uniswap/job/internal/conf;conf";
+
+import "conf/conf.proto";
+
+
+message Bootstrap {
+  conf.Trace trace = 1;
+  Server server = 2;
+  Data data = 3;
+  conf.Log log = 4;
+  conf.EnvMode env_mode = 5;
+  Alert alert = 6;
+}
+
+message Server {
+  conf.HTTP http = 1;
+  conf.GRPC grpc = 2;
+}
+
+message Data {
+  conf.MySql mysql = 1;
+  conf.Redis redis = 2;
+  repeated conf.CronJob cron_jobs = 3;
+  conf.JwtAuth jwt = 4;
+  conf.Feishu feishu = 5;
+  conf.Ethereum ethereum = 6;
+}
+
+message Registry {
+  conf.Consul consul = 1;
+  conf.Etcd etcd = 2;
+}
+
+message Alert {
+  conf.WorkWx work_wx = 1;
+  conf.Feishu feishu = 2;
+}

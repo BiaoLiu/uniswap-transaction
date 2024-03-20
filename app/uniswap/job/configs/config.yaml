@@ -1,0 +1,41 @@
+envMode: 0  # 0-DEBUG 1-DEVELOP 2-TEST 3-PRODUCTION
+trace:
+  endpoint: http://127.0.0.1:14268/api/traces
+server:
+  http:
+    addr: 0.0.0.0:8801
+    timeout: 120s
+  grpc:
+    addr: 0.0.0.0:9901
+    timeout: 120s
+data:
+  mysql:
+    maxIdleConns: 50    # 设置空闲连接池中的最大连接数
+    maxOpenConns: 50    # 设置数据库的最大打开连接数
+    maxLifetime: 300s   # 设置连接可以重用的最长时间
+    slowThreshold: 0.2s # 慢查询阀值(默认200ms)
+    enableAutoMigrate: true   # 是否启用自动映射数据库表结构
+    logLevel: info      # sql日志级别(info/warn/error)
+    source: root:root@me@tcp(127.0.0.1:3306)/uniswap-transaction?charset=utf8mb4&parseTime=True&loc=Local   # mysql数据库配置
+  redis:
+    addr: 127.0.0.1:6379
+    password: root
+    db: 0
+    poolSize: 50
+    readTimeout: 0.2s
+    writeTimeout: 0.2s
+  ethereum:
+    apiUrl: wss://polygon-mumbai.g.alchemy.com/v2/
+    chainId: 80001
+    uniswapRouterAddress: 0x56e3a1a556Be4dB63Ab7740891F449caC7EC3e46
+  feishu:
+    key: a6b5dade-95bf-42be-88b2-8e3e3dd7bbc1
+    secretKey:
+log:
+  level: debug
+  filename:
+alert:
+  feishu:
+    key: 5cba69c1-3fbb-4a92-acd8-83cce9f96ba7
+    secretKey:
+
